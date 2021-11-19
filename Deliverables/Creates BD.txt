@@ -1,0 +1,89 @@
+create table utilizador(
+                    id_utilizador SERIAL not null,
+                    utilizador_nome VARCHAR(60) not null,
+                    utilizador_regiao VARCHAR(30),
+                    utilizador_sexo CHAR(1) not null,
+                    utilizador_anosdata date not null,
+                    utilizador_email VARCHAR(30),
+                    utilizador_pass VARCHAR(30),
+                    primary key (id_utilizador)
+);
+
+create table pais(
+                    id_pais SERIAL not null,
+                    nome_pais VARCHAR(30) not null,
+                    primary key (id_pais)
+);
+
+create table regiao(
+                    id_regiao SERIAL not null,
+                    nome_regiao VARCHAR(30) not null,
+            id_pais INT not null,
+                    primary key (id_regiao)
+);
+
+
+create table tipo_prod(
+                    id_tipo_prod SERIAL not null,
+                    tipo_prod VARCHAR(30),
+                    primary key (id_tipo_prod)
+);
+
+
+create table produto(
+            
+                    id_produto  SERIAL not null,
+                    id_tipo_prod INT not null,
+                    produto_nome VARCHAR(60) not null,
+                    produto_preco money not null,
+                    produto_quantidade INT not null,
+                    primary key (id_produto)
+);
+
+
+create table produtor(
+                    id_loja SERIAL not null,
+                    loja_nome VARCHAR(60) not null,
+                    id_regiao INT not null,
+                    primary key (id_loja)
+);
+
+create table encomenda(
+                    id_encomenda SERIAL not null,
+		    id_utilizador INT not null,
+                    precot INT not null,
+                    primary key (id_encomenda)
+);
+
+create table favoritos(
+                    id_favoritos SERIAL not null,
+		    id_utilizador INT not null,
+                    id_produto INT not null,
+                    primary key (id_favoritos)
+);
+
+
+create table rating(
+                    id_rating SERIAL not null,
+                    id_utilizador INT not null,
+                id_produto INT not null,
+                    rate INT not null,
+                    primary key (id_rating)
+);
+
+create table lista_compras(
+                    id_lista SERIAL not null,
+                    id_produto INT not null,
+                    id_produtor INT not null,
+                    id_rating INT not null,
+            quantidade INT not null,
+                    precot INT not null,
+                    primary key (id_lista)
+);
+
+create table loja_prod_enc(
+                    id_loja_prod_enc SERIAL not null,
+                    id_lista INT not null,
+                    id_encomenda INT not null,
+                    primary key (id_loja_prod_enc)
+);
