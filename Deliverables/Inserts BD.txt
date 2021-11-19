@@ -1,0 +1,69 @@
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (1 , 'João Garcia' , 'Santarem' , 'M' , '2002.02.04' , 'jonas4766@gmail.com' , 'Joaogarcia123');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (2 , 'Bruno Mata' , 'Lisboa' , 'M' , '1998.05.12' , 'brunomata1998@gmail.com' , 'BrunoMata1998');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (3 , 'Bruno Preto' , 'Lisboa' , 'M' , '1998.09.05' , 'brunopreto@gmail.com' , 'BrunoPreto');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (4 , 'Ana Albuquerque' , 'Setubal' , 'F' , '2002.12.1' , 'anaalbuquerque@gmail.com' , 'AnaCarolina');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (5 , 'João Carvalo' , 'Lisboa','M' , '2002.08.10' , 'joaobcarvalho@gmail.com' , 'JoaoCarvalho123');
+
+
+insert into pais(id_pais,nome_pais) values (1,'Portugal');
+insert into pais(id_pais,nome_pais) values (2,'Suécia');
+insert into pais(id_pais,nome_pais) values (3,'Alemanha');
+insert into pais(id_pais,nome_pais) values (4,'França');
+insert into pais(id_pais,nome_pais) values (5,'Itália');
+
+insert into regiao(id_regiao,nome_regiao,id_pais) values (1,'Guarda',1);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (2,'Stockholm',2);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (3,'Bayern',3);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (4,'Paris',4);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (5,'Lazio',5);
+
+
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (1,'animal');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (2,'bebida');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (3,'Salgados');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (4,'Queijo');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (5,'doce');
+
+
+insert into produto (id_produto,id_tipo_prod,produto_nome,produto_preco,produto_quantidade) values (1 , 1 , 'Alheira' , 21.99,15);
+insert into produto (id_produto,id_tipo_prod,produto_nome,produto_preco,produto_quantidade) values (2 , 1 , 'Almondegas ' ,19.99,20);
+insert into produto (id_produto,id_tipo_prod,produto_nome,produto_preco,produto_quantidade) values (3 , 5 , 'macarons' , 4.00,10);
+insert into produto (id_produto,id_tipo_prod,produto_nome,produto_preco,produto_quantidade) values (4 , 4 , 'Parmigiano-Reggiano' ,13.99,5);
+insert into produto (id_produto,id_tipo_prod,produto_nome,produto_preco,produto_quantidade) values (5 , 5 , 'Pastel de nata ' ,1.88,30);
+
+
+insert into produtor (id_loja,loja_nome,id_regiao) values (1,'Fumeiro Artesanal de Seia',1);
+insert into produtor (id_loja,loja_nome,id_regiao) values (2,'Husmans Deli',2);
+insert into produtor (id_loja,loja_nome,id_regiao) values (3,'Ladurée',4);
+insert into produtor (id_loja,loja_nome,id_regiao) values (4,'Il negozio di formaggi di Julieta',5);
+insert into produtor (id_loja,loja_nome,id_regiao) values (5,'Pastéis de Belém',1);
+
+
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (1,1,55.96);
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (2,2,64.95);
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (3,3,106.54);
+
+
+INSERT INTO favoritos (id_favoritos,id_utilizador,id_produto) VALUES (1,4,3);
+INSERT INTO favoritos (id_favoritos,id_utilizador,id_produto) VALUES (2,5,5);
+
+
+INSERT INTO rating (id_rating , id_produto , id_utilizador, rate) VALUES (1, 1, 1, 4);
+INSERT INTO rating (id_rating , id_produto , id_utilizador, rate) VALUES (2, 2, 2, 3);
+INSERT INTO rating (id_rating , id_produto , id_utilizador, rate) VALUES (3, 3, 3, 5);
+INSERT INTO rating (id_rating , id_produto , id_utilizador, rate) VALUES (4, 4, 4, 1);
+INSERT INTO rating (id_rating , id_produto , id_utilizador, rate) VALUES (5, 5, 5, 4);
+
+
+insert into lista_compras (id_lista,id_produto,id_produtor,id_rating,quantidade,precot) values (1 , 5 , 5 , 5 , 12 , 22.56);
+insert into lista_compras (id_lista,id_produto,id_produtor,id_rating,quantidade,precot) values (2 , 1 , 1 , 1 , 2 , 43.98);
+insert into lista_compras (id_lista,id_produto,id_produtor,id_rating,quantidade,precot) values (3 , 2 , 2 , 2 , 5 , 64.95);
+insert into lista_compras (id_lista,id_produto,id_produtor,id_rating,quantidade,precot) values (4 , 3 , 3 , 3 , 10 , 40.00);
+insert into lista_compras (id_lista,id_produto,id_produtor,id_rating,quantidade,precot) values (5 , 4 , 4 , 4 , 8 , 55.96);
+
+
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (1, 1, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (2, 2, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (3, 3, 2);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (4, 4, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (5, 5, 1); 
