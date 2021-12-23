@@ -1,0 +1,80 @@
+Queries
+
+--Todas as encomendas com o respetivo comprador e o produto
+
+select encomenda.id_encomenda,utilizador.id_utilizador,produto.produto_nome,utilizador_nome,encomenda.precot
+from encomenda inner join utilizador on encomenda.id_utilizador = utilizador.id_utilizador
+inner join loja_prod_enc on encomenda.id_encomenda = loja_prod_enc.id_encomenda
+inner join lista_compras on lista_compras.id_lista = loja_prod_enc.id_lista
+inner join produto on lista_compras.id_produto = produto.id_produto
+
+
+
+
+--As encomendas que o utilizador Bruno Preto fez com o respetivo produto
+
+select encomenda.id_encomenda,utilizador.id_utilizador,produto.produto_nome,utilizador_nome,encomenda.precot
+from encomenda inner join utilizador on encomenda.id_utilizador = utilizador.id_utilizador
+inner join loja_prod_enc on encomenda.id_encomenda = loja_prod_enc.id_encomenda
+inner join lista_compras on lista_compras.id_lista = loja_prod_enc.id_lista
+inner join produto on lista_compras.id_produto = produto.id_produto
+where utilizador.utilizador_nome = 'Bruno Preto'
+
+
+
+
+--Os favoritos do utilizador João Carvalo com o respetivo preço de cada unidade do produto
+
+select utilizador.utilizador_nome,produto.produto_nome,produto.produto_preco from favoritos inner join utilizador on favoritos.id_utilizador = utilizador.id_utilizador
+inner join produto on produto.id_produto = favoritos.id_produto
+where utilizador.utilizador_nome = 'João Carvalo'
+
+
+
+
+--Utilizador João Garcia para testes de login
+
+select id_utilizador,utilizador_nome from utilizador where utilizador.utilizador_email = 'jonas4766@gmail.com' and utilizador.utilizador_pass = 'Joaogarcia123'
+
+
+--Rating--
+select id_loja, avg(rateloja) from rating
+inner join lista_compras on lista_compras.id_lista = rating.id_lista
+inner join produtor on lista_compras.id_produtor= produtor.id_loja
+group by id_loja
+
+
+select produto.id_produto, avg(rateproduto) from rating
+inner join lista_compras on lista_compras.id_lista = rating.id_lista
+inner join produto on lista_compras.id_produto= produto.id_produto
+group by produto.id_produto
+
+
+
+
+--Pesquisa utilizador (se existe)--
+
+select utilizador_existe(:nome,:pass)
+
+
+CREATE OR REPLACE FUNCTION public.utilizador_existe(
+    utilizador_email_temp character varying,
+    pass character varying)
+    RETURNS character varying
+    LANGUAGE 'plpgsql'
+    COST 100
+    VOLATILE PARALLEL UNSAFE
+AS $BODY$
+BEGIN
+  IF (select utilizador_name from utilizador where utilizador_email = utilizador_email_temp and utilizador_pass = pass) IS not NULL then
+  RETURN (select utilizador_id from utilizador where utilizador_email = utilizador_email_temp and utilizador_pass = pass);
+  ELSE 
+      IF (select utilizador_name from utilizador where utilizador_email = utilizador_email_temp) IS not NULL then
+      RETURN (select 'existe mas a palavra pass esta errada ');
+      ELSE 
+      RETURN (select 'nao existe');
+      END IF;
+  END IF;
+END;
+$BODY$;
+
