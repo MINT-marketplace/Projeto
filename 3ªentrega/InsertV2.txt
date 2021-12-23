@@ -1,0 +1,74 @@
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_morada,utilizador_codpostal,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (1 , 'João Garcia' , 'Santarem' , 'Rua Casal Magano nº48' , '2300-385' , 'M' , '2002.02.04' , 'jonas4766@gmail.com' , 'Joaogarcia123');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_morada,utilizador_codpostal,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (2 , 'Bruno Mata' , 'Sesimbra' , 'Rua Casal Quartilho nº5', '2970-013', 'M' , '1998.05.12' , 'brunomata1998@gmail.com' , 'BrunoMata1998');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_morada,utilizador_codpostal,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (3 , 'Bruno Preto' , 'Lisboa' , 'Rua 1º de Maio nº5' , '1300-472' , 'M' , '1998.09.05' , 'brunopreto@gmail.com' , 'BrunoPreto');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_morada,utilizador_codpostal,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (4 , 'Ana Albuquerque' , 'Viseu' , 'São Martinho de Mouros nº12' , '4661-907' , 'F' , '2002.12.1' , 'anaalbuquerque@gmail.com' , 'AnaCarolina');
+insert into utilizador (id_utilizador,utilizador_nome,utilizador_regiao,utilizador_morada,utilizador_codpostal,utilizador_sexo,utilizador_anosdata,utilizador_email,utilizador_pass) values (5 , 'João Carvalo' , 'Lisboa', 'Cascais  nº2' , '2751-901' , 'M' , '2002.08.10' , 'joaobcarvalho@gmail.com' , 'JoaoCarvalho123');
+
+
+insert into pais(id_pais,nome_pais) values (1,'Portugal');
+insert into pais(id_pais,nome_pais) values (2,'Suécia');
+insert into pais(id_pais,nome_pais) values (3,'Alemanha');
+insert into pais(id_pais,nome_pais) values (4,'França');
+insert into pais(id_pais,nome_pais) values (5,'Itália');
+
+insert into regiao(id_regiao,nome_regiao,id_pais) values (1,'Guarda',1);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (2,'Stockholm',2);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (3,'Bayern',3);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (4,'Paris',4);
+insert into regiao(id_regiao,nome_regiao,id_pais) values (5,'Lazio',5);
+
+
+
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (1,'Vegetariano');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (2,'Vegan');
+insert into tipo_prod (id_tipo_prod,tipo_prod) values (3,'Animal');
+
+
+insert into intolerancia (id_intolerancia,intolerancia) values (1,'Lactose');
+insert into intolerancia (id_intolerancia,intolerancia) values (2,'Glúten');
+insert into intolerancia (id_intolerancia,intolerancia) values (3,'Frutos Secos');
+insert into intolerancia (id_intolerancia,intolerancia) values (4,'Lactose e Glúten');
+insert into intolerancia (id_intolerancia,intolerancia) values (5,'Lactose e Frutos Secos');
+insert into intolerancia (id_intolerancia,intolerancia) values (6,'Glúten e Frutos Secos');
+insert into intolerancia (id_intolerancia,intolerancia) values (7,'Lactose, Glúten e Frutos Secos');
+insert into intolerancia (id_intolerancia,intolerancia) values (8,'Não tem intolerâncias');
+
+
+insert into produtor (id_loja,id_utilizador,loja_nome,id_regiao) values (1,1,'Fumeiro Artesanal de Seia',1);
+insert into produtor (id_loja,id_utilizador,loja_nome,id_regiao) values (2,1,'Husmans Deli',2);
+insert into produtor (id_loja,id_utilizador,loja_nome,id_regiao) values (3,1,'Ladurée',4);
+insert into produtor (id_loja,id_utilizador,loja_nome,id_regiao) values (4,3,'Il negozio di formaggi di Julieta',5);
+insert into produtor (id_loja,id_utilizador,loja_nome,id_regiao) values (5,3,'Pastéis de Belém',1);
+
+
+insert into produto (id_produto,id_tipo_prod,id_intolerancia,id_loja,produto_nome,produto_preco) values (1 , 3 , 2 , 1 , 'Alheira' , 21.99);
+insert into produto (id_produto,id_tipo_prod,id_intolerancia,id_loja,produto_nome,produto_preco) values (2 , 3 , 8 , 2 , 'Almondegas ' , 19.99);
+insert into produto (id_produto,id_tipo_prod,id_intolerancia,id_loja,produto_nome,produto_preco) values (3 , 1 , 7 , 3 , 'macarons' , 4.00);
+insert into produto (id_produto,id_tipo_prod,id_intolerancia,id_loja,produto_nome,produto_preco) values (4 , 1 , 1 , 4 , 'Parmigiano-Reggiano' ,13.99);
+insert into produto (id_produto,id_tipo_prod,id_intolerancia,id_loja,produto_nome,produto_preco) values (5 , 1 , 4 , 5 , 'Pastel de nata ' , 1.88);
+
+
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (1,1,55.96);
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (2,2,64.95);
+INSERT INTO encomenda (id_encomenda,id_utilizador,precot) VALUES (3,3,106.54);
+
+
+insert into lista_compras (id_lista,id_produto,id_produtor,quantidade,precot) values (1 , 5 , 5 , 12 , 22.56);
+insert into lista_compras (id_lista,id_produto,id_produtor,quantidade,precot) values (2 , 1 , 1 , 2 , 43.98);
+insert into lista_compras (id_lista,id_produto,id_produtor,quantidade,precot) values (3 , 2 , 2 , 5 , 64.95);
+insert into lista_compras (id_lista,id_produto,id_produtor,quantidade,precot) values (4 , 3 , 3 , 10 , 40.00);
+insert into lista_compras (id_lista,id_produto,id_produtor,quantidade,precot) values (5 , 4 , 4 , 8 , 55.96);
+
+
+INSERT INTO rating (id_rating , id_lista , rateloja , rateproduto) VALUES (1, 1, 4.7, 5.0);
+INSERT INTO rating (id_rating , id_lista , rateloja , rateproduto) VALUES (2, 2, 4.1, 4.6);
+INSERT INTO rating (id_rating , id_lista , rateloja , rateproduto) VALUES (3, 3, 4.9, 4.9);
+INSERT INTO rating (id_rating , id_lista , rateloja , rateproduto) VALUES (4, 4, 3.9, 3.9);
+INSERT INTO rating (id_rating , id_lista , rateloja , rateproduto) VALUES (5, 5, 4.1, 3.1);
+
+
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (1, 1, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (2, 2, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (3, 3, 2);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (4, 4, 3);
+INSERT INTO loja_prod_enc (id_loja_prod_enc,id_lista,id_encomenda) VALUES (5, 5, 1); 

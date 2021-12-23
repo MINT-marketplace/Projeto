@@ -1,0 +1,164 @@
+create table utilizador(
+                    id_utilizador SERIAL not null,
+                    utilizador_nome VARCHAR(60) not null,
+                    utilizador_regiao VARCHAR(30),
+		    utilizador_morada VARCHAR(30),
+		    utilizador_codpostal VARCHAR(8),
+                    utilizador_sexo CHAR(1) not null,
+                    utilizador_anosdata date not null,
+                    utilizador_email VARCHAR(30),
+                    utilizador_pass VARCHAR(30),
+                    primary key (id_utilizador)
+);
+
+create table pais(
+                    id_pais SERIAL not null,
+                    nome_pais VARCHAR(30) not null,
+                    primary key (id_pais)
+);
+
+create table regiao(
+                    id_regiao SERIAL not null,
+                    nome_regiao VARCHAR(30) not null,
+                    id_pais INT not null,
+                    primary key (id_regiao)
+);
+
+
+create table tipo_prod(
+                    id_tipo_prod SERIAL not null,
+                    tipo_prod VARCHAR(30),
+                    primary key (id_tipo_prod)
+);
+
+
+create table intolerancia(
+                    id_intolerancia SERIAL not null,
+                    intolerancia VARCHAR(30),
+                    primary key (id_intolerancia)
+);
+
+
+create table produto(        
+                    id_produto  SERIAL not null,
+                    id_tipo_prod INT not null,
+		    id_intolerancia INT not null,
+		    id_loja INT not null,
+                    produto_nome VARCHAR(60) not null,
+                    produto_preco money not null,
+                    primary key (id_produto)
+);
+
+
+create table produtor(
+                    id_loja SERIAL not null,
+		    id_utilizador INT not null,
+                    loja_nome VARCHAR(60) not null,
+                    id_regiao INT not null,
+                    primary key (id_loja)
+);
+
+create table encomenda(
+                    id_encomenda SERIAL not null,
+		    id_utilizador INT not null,
+                    precot INT not null,
+                    primary key (id_encomenda)
+);
+
+
+create table lista_compras(
+                    id_lista SERIAL not null,
+                    id_produto INT not null,
+                    id_produtor INT not null,
+                    quantidade INT not null,
+                    precot INT not null,
+                    primary key (id_lista)
+);
+
+
+create table rating(
+                    id_rating SERIAL not null,
+                    id_lista INT not null,
+		    rateloja double precision not null,
+                    rateproduto double precision not null,
+                    primary key (id_rating)
+);
+
+
+create table loja_prod_enc(
+                    id_loja_prod_enc SERIAL not null,
+                    id_lista INT not null,
+                    id_encomenda INT not null,
+                    primary key (id_loja_prod_enc)
+);
+
+alter table regiao
+add constraint regiao_fk_pais
+foreign key (id_pais) references pais(id_pais) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table produtor
+add constraint produtor_fk_regiao
+foreign key (id_regiao) references regiao(id_regiao) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table produtor
+add constraint produtor_fk_utilizador
+foreign key (id_utilizador) references utilizador(id_utilizador) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table produto
+add constraint produto_fk_intolerancia
+foreign key (id_intolerancia) references intolerancia(id_intolerancia) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table produto
+add constraint produto_fk_tipo_prod
+foreign key (id_tipo_prod) references tipo_prod(id_tipo_prod) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table lista_compras
+add constraint lista_compras_fk_produtor
+foreign key (id_produtor) references produtor(id_loja) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table lista_compras
+add constraint lista_compras_fk_produto
+foreign key (id_produto) references produto(id_produto) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table rating
+add constraint rating_compras_fk_lista_compras
+foreign key (id_lista) references lista_compras(id_lista) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table produto
+add constraint produto_fk_produtor
+foreign key (id_loja) references produtor(id_loja) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table loja_prod_enc
+add constraint loja_prod_enc_fk_lista_compras
+foreign key (id_lista) references lista_compras(id_lista) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table loja_prod_enc
+add constraint loja_prod_enc_fk_encomenda
+foreign key (id_encomenda) references encomenda(id_encomenda) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+
+alter table encomenda
+add constraint encomenda_fk_utilizador
+foreign key (id_utilizador) references utilizador(id_utilizador) 
+ON DELETE NO ACTION ON UPDATE NO ACTION;
